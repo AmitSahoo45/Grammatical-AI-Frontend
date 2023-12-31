@@ -11,7 +11,7 @@ interface FeatureActionProps {
 
 const FeatureAction: React.FC<FeatureActionProps> = ({ type }) => {
     const { type: actionType } = type;
-    const actionTypeValue = ActionType[actionType]; // @ts-ignore
+    const actionTypeValue = ActionType[actionType as keyof typeof ActionType]; // @ts-ignore
 
     // switch (actionTypeValue) {
     //     case ActionType.actpas:

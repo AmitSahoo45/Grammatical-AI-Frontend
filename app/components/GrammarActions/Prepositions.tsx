@@ -12,12 +12,12 @@ const Prepositions = () => {
 
     return (
         <Container classes='flex flex-col items-center'>
-            <p>
-                Fill in the blanks in the following format.
+            <p className='text-center'>
+                Fill in the blanks in the following format. <br />
                 <span className="text-[0.6rem] text-center text-red-700 mt-2 font-bold leading-3">
-                    He is junior --- to me.
-                </span>
-                The --- represent a blank space.
+                    He is junior --- me.
+                </span> <br />
+                The <span className='font-extrabold text-slate-400'>---</span> represent a blank space.
             </p>
 
             <textarea
