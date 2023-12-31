@@ -87,7 +87,7 @@ const ActivePassiveComponent = () => {
                         {explaination}
                         <br />
                         <p className="text-[0.6rem] text-center text-red-700 mt-2 font-bold leading-3">
-                            Didn't like the response? Try again by regenerating the response.
+                            Didn&apos;t like the response? Try again by regenerating the response.
                         </p>
                     </p>
                 </>
