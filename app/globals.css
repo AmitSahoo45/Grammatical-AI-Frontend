@@ -3,25 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --black: #000000;
+  --milky-white: #f8fafc;
+  --pink: #e6398f;
+  --orange: #f88b4b;
+  --green: #41fa56;
+  --gradient-1: linear-gradient(90deg, rgb(63, 250, 86) 0%, rgb(228, 230, 77) 100%)
+  --gradient-2: linear-gradient(90deg, rgb(123, 91, 199) 0%, rgb(234, 56, 141) 100%)
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+.gradient-1-text {
+  background: -webkit-linear-gradient(90deg, rgb(63, 250, 86) 0%, rgb(228, 230, 77) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-2-text {
+  background: -webkit-linear-gradient(90deg, rgb(123, 91, 199) 0%, rgb(234, 56, 141) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-1-bg{
+  background: linear-gradient(90deg, rgb(63, 250, 86) 0%, rgb(228, 230, 77) 100%);
+}
+
+.gradient-2-bg{
+  background: linear-gradient(90deg, rgb(123, 91, 199) 0%, rgb(234, 56, 141) 100%);
 }
