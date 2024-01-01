@@ -9,7 +9,7 @@ export default function Home() {
 
       <div className='mb-3 text-center'>
         <a
-          href="https://forms.gle/AXu5QsaaMHFJgy2KA"
+          href="https://forms.gle/ef8aHQrm96omDxBWA"
           target="_blank"
           rel="noreferrer"
           className="text-theme-pink hover:underline text-sm font-bold"
