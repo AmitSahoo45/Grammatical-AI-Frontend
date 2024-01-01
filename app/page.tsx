@@ -6,6 +6,17 @@ export default function Home() {
     <Container classes='min-h-screen'>
       <Heading />
       <Features />
+
+      <div className='mb-3 text-center'>
+        <a
+          href="https://forms.gle/AXu5QsaaMHFJgy2KA"
+          target="_blank"
+          rel="noreferrer"
+          className="text-theme-pink hover:underline text-sm font-bold"
+        >
+          Faced some issue? Report it here.
+        </a>
+      </div>
     </Container>
   )
 }
