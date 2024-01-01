@@ -10,6 +10,7 @@
 // }
 
 export enum ActionType {
+    rewrite = 'Rewrite according to Instructions',
     actpas = 'Active to Passive',
     prep = 'Preposition',
     adjt = 'Comparison of Adjectives',

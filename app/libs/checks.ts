@@ -12,9 +12,6 @@ export const CheckString = (text: string) => {
     if (text.length < 3)
         throw new Error('Too short!🤡');
 
-    if (text.length > 400)
-        throw new Error('Too long!🙁');
-
     const filter = new Filter();
     const isProfane = filter.isProfane(text);
 

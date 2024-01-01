@@ -39,12 +39,11 @@ const ActivePassiveComponent = () => {
                 setIsLoading(false);
                 setGotResponse(true);
             } catch (error: any) {
-                console.log(error);
                 toast.error(error.message);
             } finally {
                 setIsLoading(false);
             }
-        }, 4000, {
+        }, 3000, {
             leading: true,
             trailing: false
         }), []
@@ -95,8 +94,8 @@ const ActivePassiveComponent = () => {
 
             <button
                 className='py-2 px-4 bg-theme-pink text-white rounded text-sm font-medium hover:bg-theme-pink-600 transition-all duration-300 hover:cursor-pointer ease-out disabled:opacity-50 disabled:cursor-not-allowed'
-                onClick={() => handleActivePassive(text, action)}
                 disabled={isLoading}
+                onClick={() => handleActivePassive(text, action)}
             >
                 {isLoading ? 'Loading...' : 'Change Voice'}
             </button>

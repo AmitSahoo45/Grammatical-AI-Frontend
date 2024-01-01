@@ -39,7 +39,7 @@ const Features: React.FC = () => {
                                     .typeString("Hi, I'm Miss Janice.")
                                     .pauseFor(2000)
                                     .deleteAll()
-                                    .typeString("How can I help you with?")
+                                    .typeString("I will help you with grammar.")
                                     .pauseFor(1500)
                                     .deleteAll()
                                     .start();

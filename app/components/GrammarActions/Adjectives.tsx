@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallback, useState } from 'react'
 import dynamic from 'next/dynamic';
 import { debounce } from 'lodash';
@@ -9,20 +7,28 @@ import englishGrammar from '@/app/action/prompt';
 const Container = dynamic(() => import('@/app/components/Container'), { ssr: false });
 import { CheckString, parseResponse } from '@/app/libs/checks';
 
-const Prepositions = () => {
-    const [userInput, setUserInput] = useState('');
+const Adjectives = () => {
+    const [text, setText] = useState('');
+    const [to, setTo] = useState<string>('Positive');
+
+    const [action, setAction] = useState<string>(`Adjectives: Change to ${to} Degree`);
     const [result, setResult] = useState<string>('');
     const [explaination, setExplaination] = useState<string>('Explaination will appear here.');
 
     const [gotResponse, setGotResponse] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const handlePrepositions = useCallback(
-        debounce(async (text) => {
+    function changeDegree(to: string) {
+        setTo(to);
+        setAction(`Adjectives: Change to ${to} Degree`);
+    }
+
+    const handleAdjectives = useCallback(
+        debounce(async (text, action) => {
             try {
                 setIsLoading(true);
                 CheckString(text);
-                const response = await englishGrammar({ text, action: "Fill in the blanks with appropriate prepositions" });
+                const response = await englishGrammar({ text, action })
                 const { output, explaination: explain } = parseResponse(response);
                 setResult(output);
                 setExplaination(explain);
@@ -41,29 +47,36 @@ const Prepositions = () => {
 
     return (
         <Container classes='flex flex-col items-center'>
-            <p className='text-center'>
-                Fill in the blanks in the following format. <br />
-                <span className="text-[0.6rem] text-center text-red-700 mt-2 font-bold leading-3">
-                    He is junior --- me.
-                </span> <br />
-                The <span className='font-extrabold text-slate-400'>---</span> represent a blank space.
-            </p>
+            <div>
+                Change to
+                <select
+                    className='ml-2 border border-gray-300 rounded-lg p-1'
+                    value={to}
+                    onChange={(e) => changeDegree(e.target.value)}
+                >
+                    <option value="Positive">Positive</option>
+                    <option value="Comparative">Comparative</option>
+                    <option value="Superlative">Superlative</option>
+                </select>
+                &nbsp;Degree
+            </div>
 
             <textarea
                 className="w-full h-40 p-2 border border-gray-300 rounded-lg mt-4 resize-none"
-                value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                onFocus={() => setGotResponse(false)}
                 placeholder="Enter your phrase"
                 spellCheck={false}
                 required
             />
 
             <button
-                className='py-2 px-4 mt-4 mb-3 bg-theme-pink text-white rounded text-sm font-medium hover:bg-theme-pink-600 transition-all duration-300 hover:cursor-pointer ease-out disabled:opacity-50 disabled:cursor-not-allowed'
-                onClick={() => handlePrepositions(userInput)}
+                className='py-2 px-4 my-3 bg-theme-pink text-white rounded text-sm font-medium hover:bg-theme-pink-600 transition-all duration-300 hover:cursor-pointer ease-out disabled:opacity-50 disabled:cursor-not-allowed'
                 disabled={isLoading}
+                onClick={() => handleAdjectives(text, action)}
             >
-                {isLoading ? 'Loading...' : 'Give me prepositions!'}
+                {isLoading ? 'Loading...' : ` Convert to ${to} Degree`}
             </button>
 
             {gotResponse
@@ -80,11 +93,10 @@ const Prepositions = () => {
                             Didn&apos;t like the response? Try again by regenerating the response.
                         </span>
                     </p>
-
                 </>
             }
         </Container>
     )
 }
 
-export default Prepositions
+export default Adjectives
