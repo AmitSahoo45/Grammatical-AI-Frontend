@@ -45,8 +45,12 @@ const englishGrammar = async (request: RequestProps): Promise<string> => {
             model: 'gemini-1.5-pro',
             contents: prompt
         })
-        let response = result.text || ''
-        return response
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -88,8 +92,12 @@ export const RewriteSentences = async (request: RequestProps): Promise<string> =
             model: 'gemini-1.5-pro',
             contents: prompt
         })
-        let response = result.text || ''
-        return response
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -131,8 +139,12 @@ export const FillinTenses = async (request: RequestProps): Promise<string> => {
             model: 'gemini-1.5-pro',
             contents: prompt
         })
-        let response = result.text || ''
-        return response
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -177,8 +189,12 @@ export const DirectAndIndirect = async (request: RequestProps): Promise<string> 
             model: 'gemini-1.5-pro',
             contents: prompt
         })
-        let response = result.text || ''
-        return response
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -225,8 +241,12 @@ export const SubjectVerbAgreement = async (request: RequestProps): Promise<strin
             model: 'gemini-1.5-pro',
             contents: prompt
         })
-        let response = result.text || ''
-        return response
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -276,8 +296,12 @@ export const ConditionalSentences = async (request: RequestProps): Promise<strin
             model: 'gemini-1.5-pro',
             contents: prompt
         })
-        let response = result.text || ''
-        return response
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -331,8 +355,12 @@ export const NegativeSentences = async (request: RequestProps): Promise<string> 
             model: 'gemini-1.5-pro',
             contents: prompt
         })
-        let response = result.text || ''
-        return response
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
