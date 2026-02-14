@@ -6,7 +6,7 @@ const random = () => Math.floor(Math.random() * 3)
 const generativeAI = new GoogleGenerativeAI(
     random() === 0 ? process.env.NEXT_PUBLIC_GEMINI_PRO_API_KEY_1 as string : process.env.NEXT_PUBLIC_GEMINI_PRO_API_KEY_2 as string
 )
-const model = generativeAI.getGenerativeModel({ model: 'gemini-pro' })
+const model = generativeAI.getGenerativeModel({ model: 'gemini-1.5-pro' })
 
 interface RequestProps {
     text: string;
