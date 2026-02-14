@@ -35,11 +35,11 @@ const FeatureAction: React.FC<FeatureActionProps> = ({ type }) => {
             {/* @ts-ignore */}
             {actionTypeValue === ActionType.directindirect && <DirectIndirect />}
             {/* @ts-ignore */}
-            {actionTypeValue === ActionType.subjectverb && <SubjectVerb />}
+            {actionTypeValue === ActionType.subvergagrmt && <SubjectVerb />}
             {/* @ts-ignore */}
             {actionTypeValue === ActionType.conditional && <Conditional />}
             {/* @ts-ignore */}
-            {actionTypeValue === ActionType.negative && <Negative />}
+            {actionTypeValue === ActionType.neg && <Negative />}
         </>
     )
 };
