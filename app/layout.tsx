@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { AppProvider } from '@/app/context/context';
-import dynamic from 'next/dynamic';
-
-const ToastContainer = dynamic(() => import('@/app/components/ToastContainer'), { ssr: false })
-const Footer = dynamic(() => import('@/app/components/Footer'), { ssr: false })
+import ToastContainer from '@/app/components/ToastContainer';
+import Footer from '@/app/components/Footer';
 
 import { Analytics } from '@vercel/analytics/react';
 import './globals.css'
