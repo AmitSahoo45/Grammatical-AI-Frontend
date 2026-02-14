@@ -1,12 +1,11 @@
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { GoogleGenAI } from '@google/genai'
 
 // generate a random number between 0 and 2
 const random = () => Math.floor(Math.random() * 3)
 
-const generativeAI = new GoogleGenerativeAI(
-    random() === 0 ? process.env.NEXT_PUBLIC_GEMINI_PRO_API_KEY_1 as string : process.env.NEXT_PUBLIC_GEMINI_PRO_API_KEY_2 as string
-)
-const model = generativeAI.getGenerativeModel({ model: 'gemini-1.5-pro' })
+const generativeAI = new GoogleGenAI({
+    apiKey: random() === 0 ? process.env.NEXT_PUBLIC_GEMINI_PRO_API_KEY_1 as string : process.env.NEXT_PUBLIC_GEMINI_PRO_API_KEY_2 as string
+})
 
 interface RequestProps {
     text: string;
@@ -42,9 +41,16 @@ const englishGrammar = async (request: RequestProps): Promise<string> => {
         This result should be string which can be easily converted to JSON using JSON.parse()
         `
 
-        const result = await model.generateContent(prompt)
-        let response = await result.response.text()
-        return response
+        const result = await generativeAI.models.generateContent({
+            model: 'gemini-1.5-pro',
+            contents: prompt
+        })
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -82,9 +88,16 @@ export const RewriteSentences = async (request: RequestProps): Promise<string> =
         This result should be string which can be easily converted to JSON using JSON.parse()
         `
 
-        const result = await model.generateContent(prompt)
-        let response = await result.response.text()
-        return response
+        const result = await generativeAI.models.generateContent({
+            model: 'gemini-1.5-pro',
+            contents: prompt
+        })
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -122,9 +135,16 @@ export const FillinTenses = async (request: RequestProps): Promise<string> => {
         This result should be string which can be easily converted to JSON using JSON.parse()
         `
 
-        const result = await model.generateContent(prompt)
-        let response = await result.response.text()
-        return response
+        const result = await generativeAI.models.generateContent({
+            model: 'gemini-1.5-pro',
+            contents: prompt
+        })
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -165,9 +185,16 @@ export const DirectAndIndirect = async (request: RequestProps): Promise<string> 
         This result should be a string that can be easily converted to JSON using JSON.parse()
         `
 
-        const result = await model.generateContent(prompt)
-        let response = await result.response.text()
-        return response
+        const result = await generativeAI.models.generateContent({
+            model: 'gemini-1.5-pro',
+            contents: prompt
+        })
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -210,9 +237,16 @@ export const SubjectVerbAgreement = async (request: RequestProps): Promise<strin
         This result should be a string that can be easily converted to JSON using JSON.parse()
         `
 
-        const result = await model.generateContent(prompt)
-        let response = await result.response.text()
-        return response
+        const result = await generativeAI.models.generateContent({
+            model: 'gemini-1.5-pro',
+            contents: prompt
+        })
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -258,9 +292,16 @@ export const ConditionalSentences = async (request: RequestProps): Promise<strin
         This result should be a string that can be easily converted to JSON using JSON.parse()
         `
 
-        const result = await model.generateContent(prompt)
-        let response = await result.response.text()
-        return response
+        const result = await generativeAI.models.generateContent({
+            model: 'gemini-1.5-pro',
+            contents: prompt
+        })
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
@@ -310,9 +351,16 @@ export const NegativeSentences = async (request: RequestProps): Promise<string> 
         This result should be a string that can be easily converted to JSON using JSON.parse()
         `
 
-        const result = await model.generateContent(prompt)
-        let response = await result.response.text()
-        return response
+        const result = await generativeAI.models.generateContent({
+            model: 'gemini-1.5-pro',
+            contents: prompt
+        })
+        
+        if (!result.text) {
+            throw new Error('No response text received from Gemini API')
+        }
+        
+        return result.text
     } catch (error) {
         return error as string;
     }
