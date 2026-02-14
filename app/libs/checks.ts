@@ -24,7 +24,41 @@ export function parseResponse(response: string): Response {
     const withoutMarkdownFence = trimmedResponse
         .replace(/^```(?:json)?\s*/i, '')
         .replace(/\s*```$/i, '');
-    const jsonResponse = withoutMarkdownFence.match(/\{[\s\S]*\}/)?.[0] || withoutMarkdownFence;
+    try {
+        return JSON.parse(withoutMarkdownFence) as Response;
+    } catch (initialError) {
+        const firstBracketIndex = withoutMarkdownFence.indexOf('{');
+        let bracketDepth = 0;
+        let startIndex = -1;
+        let inString = false;
+        let isEscaped = false;
 
-    return JSON.parse(jsonResponse) as Response;
+        if (firstBracketIndex !== -1) {
+            for (let charIndex = firstBracketIndex; charIndex < withoutMarkdownFence.length; charIndex++) {
+                const currentChar = withoutMarkdownFence[charIndex];
+
+                if (currentChar === '"' && !isEscaped) {
+                    inString = !inString;
+                }
+
+                if (!inString) {
+                    if (currentChar === '{') {
+                        if (bracketDepth === 0) startIndex = charIndex;
+                        bracketDepth++;
+                    } else if (currentChar === '}') {
+                        bracketDepth--;
+                        if (bracketDepth === 0 && startIndex !== -1) {
+                            const jsonResponse = withoutMarkdownFence.slice(startIndex, charIndex + 1);
+                            return JSON.parse(jsonResponse) as Response;
+                        }
+                    }
+                }
+
+                isEscaped = currentChar === '\\' && !isEscaped;
+            }
+        }
+
+        const reason = initialError instanceof Error ? initialError.message : 'Unknown parse error';
+        throw new Error(`Unable to parse AI response. Please try again. (${reason})`);
+    }
 }
