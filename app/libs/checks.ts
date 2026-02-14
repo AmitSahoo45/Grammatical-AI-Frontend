@@ -20,5 +20,11 @@ export const CheckString = (text: string) => {
 }
 
 export function parseResponse(response: string): Response {
-    return JSON.parse(response) as Response;
+    const trimmedResponse = response.trim();
+    const withoutMarkdownFence = trimmedResponse
+        .replace(/^```(?:json)?\s*/i, '')
+        .replace(/\s*```$/i, '');
+    const jsonResponse = withoutMarkdownFence.match(/\{[\s\S]*\}/)?.[0] || withoutMarkdownFence;
+
+    return JSON.parse(jsonResponse) as Response;
 }
