@@ -42,7 +42,7 @@ const englishGrammar = async (request: RequestProps): Promise<string> => {
         `
 
         const result = await generativeAI.models.generateContent({
-            model: 'gemini-1.5-pro',
+            model: 'gemini-2.5-flash',
             contents: prompt
         })
         
@@ -89,7 +89,7 @@ export const RewriteSentences = async (request: RequestProps): Promise<string> =
         `
 
         const result = await generativeAI.models.generateContent({
-            model: 'gemini-1.5-pro',
+            model: 'gemini-2.5-flash',
             contents: prompt
         })
         
@@ -136,7 +136,7 @@ export const FillinTenses = async (request: RequestProps): Promise<string> => {
         `
 
         const result = await generativeAI.models.generateContent({
-            model: 'gemini-1.5-pro',
+            model: 'gemini-2.5-flash',
             contents: prompt
         })
         
@@ -186,7 +186,7 @@ export const DirectAndIndirect = async (request: RequestProps): Promise<string> 
         `
 
         const result = await generativeAI.models.generateContent({
-            model: 'gemini-1.5-pro',
+            model: 'gemini-2.5-flash',
             contents: prompt
         })
         
@@ -238,7 +238,7 @@ export const SubjectVerbAgreement = async (request: RequestProps): Promise<strin
         `
 
         const result = await generativeAI.models.generateContent({
-            model: 'gemini-1.5-pro',
+            model: 'gemini-2.5-flash',
             contents: prompt
         })
         
@@ -293,7 +293,7 @@ export const ConditionalSentences = async (request: RequestProps): Promise<strin
         `
 
         const result = await generativeAI.models.generateContent({
-            model: 'gemini-1.5-pro',
+            model: 'gemini-2.5-flash',
             contents: prompt
         })
         
@@ -352,7 +352,7 @@ export const NegativeSentences = async (request: RequestProps): Promise<string> 
         `
 
         const result = await generativeAI.models.generateContent({
-            model: 'gemini-1.5-pro',
+            model: 'gemini-2.5-flash',
             contents: prompt
         })
         
